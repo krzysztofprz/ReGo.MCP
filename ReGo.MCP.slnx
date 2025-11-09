@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ReGo.MCP/ReGo.MCP.csproj" />
+  <Project Path="ReGo.RegonApi/ReGo.RegonApi.csproj" />
+</Solution>

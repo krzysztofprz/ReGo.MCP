@@ -5,17 +5,17 @@ FROM mcr.microsoft.com/dotnet/runtime:9.0 AS base
 USER $APP_UID
 WORKDIR /app
 
-
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
+ARG RUNTIME_IDENTIFIER=linux-x64
 WORKDIR /src
-COPY ["ReGo.MCP.csproj", "."]
+COPY ["ReGo.MCP/ReGo.MCP.csproj", "ReGo.MCP/"]
 COPY ["ReGo.RegonApi/ReGo.RegonApi.csproj", "ReGo.RegonApi/"]
-RUN dotnet restore "./ReGo.MCP.csproj"
+RUN dotnet restore "./ReGo.MCP/ReGo.MCP.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./ReGo.MCP.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/ReGo.MCP"
+RUN dotnet build "./ReGo.MCP.csproj" -c $BUILD_CONFIGURATION -r $RUNTIME_IDENTIFIER -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish

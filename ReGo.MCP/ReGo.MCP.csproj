@@ -25,18 +25,16 @@
     <PackageTags>AI; MCP; server; stdio</PackageTags>
     <Description>An MCP server using the MCP C# SDK.</Description>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ReGo.RegonApi\**" />
-    <EmbeddedResource Remove="ReGo.RegonApi\**" />
-    <None Remove="ReGo.RegonApi\**" />
+    <Compile Remove=".mcp\**" />
+    <EmbeddedResource Remove=".mcp\**" />
+    <None Remove=".mcp\**" />
   </ItemGroup>
 
   <!-- Include additional files for browsing the MCP server. -->
   <ItemGroup>
-    <None Include=".mcp\server.json" Pack="true" PackagePath="/.mcp/" />
     <None Include="README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
@@ -47,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="ReGo.RegonApi\ReGo.RegonApi.csproj" />
+    <ProjectReference Include="..\ReGo.RegonApi\ReGo.RegonApi.csproj" />
   </ItemGroup>
 
 </Project>

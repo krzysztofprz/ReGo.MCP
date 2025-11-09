@@ -1,13 +1,17 @@
 {
   "servers": {
-    "ReGoMcpServer": {
-      "type": "stdio",
+    "ReGoMCP": {
       "command": "dotnet",
       "args": [
         "run",
         "--project",
-        "ReGo.MCP.csproj"
-      ]
+        "ReGo.MCP/ReGo.MCP.csproj",
+        "--",
+        "--regonApiKey=${regonApiKey}"
+      ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
     }
   }
 }

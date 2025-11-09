@@ -1,22 +1,30 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-  "description": "<your description here>",
-  "name": "io.github.<your GitHub username here>/<your repo name>",
+  "description": "MCP server integrating REGON API",
+  "name": "io.github.krzysztofprz/ReGo.MCP",
   "version": "0.1.0-beta",
   "packages": [
     {
       "registryType": "nuget",
-      "identifier": "<your package ID here>",
+      "identifier": "ReGo.MCP",
       "version": "0.1.0-beta",
       "transport": {
         "type": "stdio"
       },
       "packageArguments": [],
-      "environmentVariables": []
+      "environmentVariables": [
+        {
+          "name": "regonApiKey",
+          "value": "${regonApiKey}",
+          "description": "REGON API KEY",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
     }
   ],
   "repository": {
-    "url": "https://github.com/<your GitHub username here>/<your repo name>",
+    "url": "https://github.com/krzysztofprz/ReGo.MCP",
     "source": "github"
   }
 }

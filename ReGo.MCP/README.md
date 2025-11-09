@@ -36,14 +36,18 @@ To test this MCP server from source code (locally) without using a built MCP ser
 ```json
 {
   "servers": {
-    "ReGo.MCP": {
-      "type": "stdio",
+    "ReGoMCP": {
       "command": "dotnet",
       "args": [
         "run",
         "--project",
-        "<PATH TO PROJECT DIRECTORY>"
-      ]
+        "ReGo.MCP/ReGo.MCP.csproj",
+        "--",
+        "--regonApiKey=${regonApiKey}"
+      ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
     }
   }
 }
@@ -51,7 +55,7 @@ To test this MCP server from source code (locally) without using a built MCP ser
 
 ## Testing the MCP Server
 
-Once configured, you can ask Copilot Chat for a random number, for example, `Give me 3 random numbers`. It should prompt you to use the `get_random_number` tool on the `ReGo.MCP` MCP server and show you the results.
+Once configured, you can ask Copilot Chat for a business entity registered in CEIDG based on NIP, KRS or REGON number, for example, `Check entity details for NIP 6770065406`. It should prompt you to use the `get_entity_data_by_nip` tool on the `ReGo.MCP` MCP server and show you the results.
 
 ## Publishing to NuGet.org
 
@@ -74,9 +78,9 @@ For both VS Code and Visual Studio, the configuration file uses the following se
       "type": "stdio",
       "command": "dnx",
       "args": [
-        "<your package ID here>",
+        "ReGo.MCP",
         "--version",
-        "<your package version here>",
+        "0.1.0-beta",
         "--yes"
       ]
     }
