@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "ReGoMcpServer": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "ReGo.MCP.csproj"
+      ]
+    }
+  }
+}
