@@ -4,11 +4,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ReGo.RegonApi.Services;
 using ReGo.RegonApi.Tools;
+using System.Reflection;
 
 var builder = Host.CreateApplicationBuilder(args);
 
 var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
+    .AddUserSecrets(Assembly.GetExecutingAssembly())
     .AddCommandLine(args)
     .Build();
 

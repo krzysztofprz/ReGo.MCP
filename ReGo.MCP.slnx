@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="LICENSE.txt" />
+  </Folder>
   <Project Path="ReGo.MCP/ReGo.MCP.csproj" />
   <Project Path="ReGo.RegonApi/ReGo.RegonApi.csproj" />
 </Solution>
