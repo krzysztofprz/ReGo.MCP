@@ -5,9 +5,7 @@
       "args": [
         "run",
         "--project",
-        "ReGo.MCP/ReGo.MCP.csproj",
-        "--",
-        "--regonApiKey=${regonApiKey}"
+        "ReGo.MCP/ReGo.MCP.csproj"
       ],
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Production"

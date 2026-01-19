@@ -8,13 +8,9 @@ using System.Reflection;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-var configuration = new ConfigurationBuilder()
-    .AddEnvironmentVariables()
-    .AddUserSecrets(Assembly.GetExecutingAssembly())
-    .AddCommandLine(args)
-    .Build();
+builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly());
 
-if (string.IsNullOrEmpty(configuration.GetValue<string>("regonApiKey")))
+if (string.IsNullOrEmpty(builder.Configuration.GetValue<string>("regonApiKey")))
 {
     Console.Error.WriteLine("Error: REGON API KEY missing.");
     Environment.Exit(1);
