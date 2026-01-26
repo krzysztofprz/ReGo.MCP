@@ -18,6 +18,7 @@ if (string.IsNullOrEmpty(builder.Configuration.GetValue<string>("regonApiKey")))
 
 // Configure all logs to go to stderr (stdout is used for the MCP protocol messages).
 builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
+builder.Logging.AddFilter("Microsoft", LogLevel.Warning);
 
 builder.Services.AddSingleton<RegonService>();
 
