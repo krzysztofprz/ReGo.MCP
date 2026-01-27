@@ -16,16 +16,15 @@ if (string.IsNullOrEmpty(builder.Configuration.GetValue<string>("regonApiKey")))
     Environment.Exit(1);
 }
 
-// Configure all logs to go to stderr (stdout is used for the MCP protocol messages).
-builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
-builder.Logging.AddFilter("Microsoft", LogLevel.Warning);
-
 builder.Services.AddSingleton<RegonService>();
 
-// Add the MCP services: the transport to use (stdio) and the tools to register.
 builder.Services
-    .AddMcpServer()
-    .WithStdioServerTransport()
-    .WithTools<RegonApiTool>();
+    .AddMcpServer() // 1. Add MCP server
+    .WithStdioServerTransport() // 2. Transport to use (stdio)
+    .WithTools<RegonApiTool>(); // 3. Tool to register
+
+// 4. Configure all logs to go to stderr (stdout is used for the MCP protocol messages).
+builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
+builder.Logging.AddFilter("Microsoft", LogLevel.Warning);
 
 await builder.Build().RunAsync();

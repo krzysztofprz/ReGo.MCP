@@ -11,11 +11,13 @@ namespace ReGo.RegonApi.Tools
     [McpServerToolType]
     public sealed class RegonApiTool
     {
+        const string regonApiUrl = "https://api.stat.gov.pl/Home/RegonApi";
+
         // Declares the method as an MCP tool that can be invoked by the server and AI clients
         // Provides a human-readable explanation of what the tool does.
         // This description appears in interfaces like MCP Inspector or Claude Desktop, helping AI understand the tool’s purpose.
         [McpServerTool, Description("Get a business entity data for a given NIP.")]
-        [McpMeta("dataSource", "https://api.stat.gov.pl/Home/RegonApi")]
+        [McpMeta("dataSource", regonApiUrl)]
         public async Task<string> GetEntityDataByNipAsync(
             RegonService regonService,
             [Description("Business entity NIP number")] string nip)
@@ -24,7 +26,7 @@ namespace ReGo.RegonApi.Tools
         }
 
         [McpServerTool, Description("Get a business entity data for a given KRS.")]
-        [McpMeta("dataSource", "https://api.stat.gov.pl/Home/RegonApi")]
+        [McpMeta("dataSource", regonApiUrl)]
         public async Task<string> GetEntityDataByKrsAsync(
             RegonService regonService,
             [Description("Business entity KRS number")] string krs)
@@ -33,7 +35,7 @@ namespace ReGo.RegonApi.Tools
         }
 
         [McpServerTool, Description("Get a business entity data for a given REGON.")]
-        [McpMeta("dataSource", "https://api.stat.gov.pl/Home/RegonApi")]
+        [McpMeta("dataSource", regonApiUrl)]
         public async Task<string> GetEntityDataByRegonAsync(
             RegonService regonService,
             [Description("Business entity REGON number")] string regon)
